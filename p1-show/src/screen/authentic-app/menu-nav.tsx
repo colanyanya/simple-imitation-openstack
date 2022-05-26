@@ -46,6 +46,6 @@ export const MenuNav = () => {
     ]
 
     return (
-        <Menu mode={"inline"} items={MenuItem} theme={'dark'} style={{height:'100%'}}/>
+        <Menu mode={"inline"} items={MenuItem} style={{height:'100%'}}/>
     )
 }

@@ -26,5 +26,6 @@ export const UnAuthenticApp = () => {
 const CenterDiv = styled.div`
     margin: 100px auto;
     width: 400px;
+    text-align: center;
 `
 
