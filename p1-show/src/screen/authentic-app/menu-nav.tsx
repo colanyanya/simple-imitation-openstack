@@ -1,10 +1,11 @@
 import React from "react";
-import {useAuth} from "../../context/auth-context";
-import {Button, Menu} from "antd";
-import {useNavigate} from "react-router-dom"
+import { useAuth } from "../../context/auth-context";
+import { Button, Menu, MenuProps } from "antd";
+import { useNavigate } from "react-router-dom"
+import styled from "@emotion/styled";
 
 export const MenuNav = () => {
-    const {logout} = useAuth()
+    const { logout } = useAuth()
     const navigate = useNavigate()
 
     const toMine = () => {
@@ -19,14 +20,32 @@ export const MenuNav = () => {
         navigate('/compute')
     }
 
+    type MenuItem = Required<MenuProps>['items'][number];
+    function getItem(
+        label: React.ReactNode,
+        key: React.Key,
+        icon?: React.ReactNode,
+        children?: MenuItem[],
+        type?: 'group',
+    ): MenuItem {
+        return {
+            key,
+            icon,
+            children,
+            label,
+            type,
+        } as MenuItem;
+    }
+
+    const MenuItem = [
+        getItem(<a onClick={logout}>←登出</a>, 'logout'),
+        getItem(<a onClick={() => toMine()}>个人中心</a>, 'mine'),
+        getItem(<a onClick={() => toUsr()}>用户管理</a>, 'user'),
+        getItem(<a onClick={() => toCompute()}>主机管理</a>, 'compute')
+
+    ]
+
     return (
-        <div>
-            <Menu>
-                <Button onClick={logout}>←登出</Button>
-                <Button onClick={() => toMine()}>个人中心</Button>
-                <Button onClick={() => toUsr()}>用户管理</Button>
-                <Button onClick={() => toCompute()}>主机管理</Button>
-            </Menu>
-        </div>
+        <Menu mode={"inline"} items={MenuItem} theme={'dark'} style={{height:'100%'}}/>
     )
 }

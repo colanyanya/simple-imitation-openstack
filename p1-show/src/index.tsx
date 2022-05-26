@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import 'antd/dist/antd.less'
+import './index.css';
 import App from './App';
 
 import {AppProviders} from "./context";
