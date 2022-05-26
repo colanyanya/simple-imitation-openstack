@@ -53,7 +53,7 @@ const addUser = (newUser) => {
   if (newUser.name && userList.find(user => user.name === newUser.name)) {
     return "rename"
   }
-  userList.push({...newUser, id: nanoid()})
+  userList.push({auth:"2",...newUser, id: nanoid()})
   saveData()
 }
 

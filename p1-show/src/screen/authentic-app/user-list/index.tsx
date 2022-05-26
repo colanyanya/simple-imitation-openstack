@@ -66,6 +66,14 @@ export const UserList = () => {
             key: 'email'
         },
         {
+            title: '权限',
+            // dataIndex: 'auth',
+            key: 'auth',
+            render:(user:User)=>{
+                return user.auth==="1"?"管理员":"普通用户"
+            }
+        },
+        {
             title: '操作',
             key: 'action',
             render: (user:User) => (

@@ -18,7 +18,8 @@ export interface User{
     name:string,
     password:string,
     age:string,
-    email:string
+    email:string,
+    auth:string
 }
 
 export interface Compute{
@@ -37,6 +38,7 @@ export interface UserResponse{
     password:string,
     age:string,
     email:string,
+    auth:string,
     token: string
 }
 

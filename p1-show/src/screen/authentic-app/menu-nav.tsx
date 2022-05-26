@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import { Button, Menu, MenuProps } from "antd";
 import { useNavigate } from "react-router-dom"
 import styled from "@emotion/styled";
 
 export const MenuNav = () => {
-    const { logout } = useAuth()
+    const { logout,user } = useAuth()
     const navigate = useNavigate()
 
     const toMine = () => {
@@ -37,7 +37,7 @@ export const MenuNav = () => {
         } as MenuItem;
     }
 
-    const MenuItem = [
+    const MenuAdminItem = [
         getItem(<a onClick={logout}>←登出</a>, 'logout'),
         getItem(<a onClick={() => toMine()}>个人中心</a>, 'mine'),
         getItem(<a onClick={() => toUsr()}>用户管理</a>, 'user'),
@@ -45,7 +45,16 @@ export const MenuNav = () => {
 
     ]
 
+    const MenuUserItem = [
+        getItem(<a onClick={logout}>←登出</a>, 'logout'),
+        getItem(<a onClick={() => toMine()}>个人中心</a>, 'mine')
+
+    ]
+
+
+
+
     return (
-        <Menu mode={"inline"} items={MenuItem} style={{height:'100%'}}/>
+        <Menu mode={"inline"} items={user?.auth==="1"?MenuAdminItem:MenuUserItem} style={{height:'100%'}}/>
     )
 }

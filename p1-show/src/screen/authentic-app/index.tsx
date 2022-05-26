@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes,useNavigate } from "react-router-dom"
 import { MyMessage } from "./my-message";
 import { MenuNav } from "./menu-nav";
 import { UserList } from "./user-list";
@@ -12,6 +12,10 @@ import styled from "@emotion/styled";
 import { Hello } from "./welcome";
 
 export const AuthenticAPP = () => {
+    // const navigate = useNavigate()
+    // useEffect(()=>{
+    //     navigate('/')
+    // },[])
 
     return (
         <div>
